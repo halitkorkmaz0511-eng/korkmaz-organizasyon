@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korkmaz Organizasyon | Rezervasyon Sistemi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', sans-serif;
+  background: #0f0f14;
+  color: #eaeaea;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(149, 187, 255, 0.14), transparent 22%),
+    linear-gradient(145deg, #11203a 0%, #1f304c 100%);
+  color: #eaeaea;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.app-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 28px 64px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 22px 28px;
+  margin-bottom: 42px;
+  border-radius: 28px;
+  background: rgba(18, 32, 52, 0.82);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(28px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #d4af37, #f0dc95);
+  color: #111;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 14px 28px rgba(212, 175, 55, 0.2);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.05;
+}
+
+.brand p {
+  margin: 6px 0 0;
+  color: #d7c9b2;
+}
+
+.cta-button,
+.secondary-button,
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  padding: 15px 26px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.cta-button {
+  background: #d4af37;
+  color: #111;
+  font-weight: 700;
+}
+
+.cta-button:hover,
+.secondary-button:hover,
+.primary-button:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 22px 45px rgba(212, 175, 55, 0.28);
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #eaeaea;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 18px;
+}
+
+.hero-section {
+  display: grid;
+  gap: 34px;
+  grid-template-columns: minmax(0, 1.7fr) minmax(340px, 1fr);
+  align-items: start;
+  margin-bottom: 52px;
+}
+
+.hero-copy {
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.82rem;
+}
+
+.hero-copy h2 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #f4efe6;
+  text-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+}
+
+.hero-copy p {
+  margin: 24px 0 36px;
+  max-width: 620px;
+  color: #e4dccf;
+  line-height: 1.9;
+  font-size: 1.05rem;
+}
+
+.hero-stats {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hero-stats div {
+  padding: 20px 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: 1.35rem;
+  color: #f2ebdd;
+}
+
+.hero-stats span {
+  color: #c7b59b;
+  font-size: 0.92rem;
+}
+
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 34px;
+  border-radius: 34px;
+  background: rgba(22, 34, 52, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(22px);
+}
+
+.card-header p {
+  margin: 0 0 12px;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.80rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #f4efe6;
+}
+
+.price-summary {
+  padding: 24px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.price-summary p {
+  margin: 0 0 10px;
+  color: #d7c49c;
+}
+
+.price-summary h4 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.price-summary span {
+  display: block;
+  margin-top: 10px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f7e4b7;
+}
+
+.event-options {
+  display: grid;
+  gap: 16px;
+}
+
+.event-option {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  border-radius: 22px;
+  padding: 20px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.045);
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.event-option:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.event-option.active {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.16);
+  box-shadow: 0 18px 45px rgba(212, 175, 55, 0.12);
+}
+
+.event-option span {
+  font-weight: 600;
+}
+
+.event-option small {
+  color: #d9c9a8;
+}
+
+.reservation-panel {
+  display: flex;
+  justify-content: center;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+}
+
+.card {
+  border-radius: 32px;
+  background: rgba(18, 30, 46, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  padding: 30px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.22);
+}
+
+.glass {
+  backdrop-filter: blur(24px);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.panel-header p {
+  margin: 0;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 1.7rem;
+  color: #f4efe6;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.day-name,
+.calendar-day {
+  display: grid;
+  place-items: center;
+  min-height: 56px;
+  border-radius: 16px;
+}
+
+.day-name {
+  color: #b8a783;
+  font-size: 0.86rem;
+}
+
+.calendar-day {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ece7dc;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.calendar-day:hover:not(.booked):not(.selected) {
+  transform: translateY(-2px);
+  background: rgba(212, 175, 55, 0.16);
+}
+
+.calendar-day.booked {
+  color: #8f7a68;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: not-allowed;
+}
+
+.calendar-day.selected {
+  background: linear-gradient(135deg, #d4af37, #f5e2a1);
+  color: #111;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.28);
+}
+
+.month-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.month-controls button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f4f1ec;
+  cursor: pointer;
+}
+
+.month-controls span {
+  font-weight: 700;
+}
+
+.legend-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: #b9a67e;
+  font-size: 0.9rem;
+}
+
+.legend-dot {
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.legend-dot.available { background: #d4af37; }
+.legend-dot.booked { background: #6b5d4f; }
+.legend-dot.selected { background: #f4efe6; }
+
+.input-group {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  color: #ddd3c4;
+  font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #eaeaea;
+  outline: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.16);
+}
+
+.readonly-value {
+  min-height: 56px;
+  display: grid;
+  place-items: center;
+  padding: 0 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ece7dc;
+}
+
+.time-slot-card {
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  margin-bottom: 24px;
+}
+
+.time-slot-card p {
+  margin: 0 0 14px;
+  color: #d7c38c;
+  font-weight: 700;
+}
+
+.time-slots {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.time-slot {
+  padding: 16px 0;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  cursor: pointer;
+}
+
+.time-slot:hover:not(.unavailable):not(.active) {
+  transform: translateY(-1px);
+  background: rgba(212, 175, 55, 0.16);
+}
+
+.time-slot.active {
+  background: #d4af37;
+  color: #111;
+  border-color: #d4af37;
+}
+
+.time-slot.unavailable {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.primary-button {
+  width: 100%;
+  background: linear-gradient(135deg, #d4af37, #f4e5a4);
+  color: #111;
+  font-weight: 700;
+  box-shadow: 0 18px 40px rgba(212, 175, 55, 0.2);
+}
+
+.hint {
+  margin: 18px 0 0;
+  color: #c9b892;
+  font-size: 0.92rem;
+}
+
+.summary-section {
+  margin-top: 44px;
+}
+
+.summary-card {
+  padding: 34px;
+  border-radius: 34px;
+  background: rgba(20, 34, 52, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  box-shadow: 0 38px 90px rgba(0, 0, 0, 0.22);
+}
+
+.summary-card h3 {
+  margin: 0 0 16px;
+}
+
+.summary-card p {
+  margin: 0 0 28px;
+  color: #d8c9ab;
+  line-height: 1.9;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.summary-grid div {
+  padding: 20px 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.01);
+}
+
+.summary-grid strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.summary-grid span {
+  color: #b9a88a;
+  font-size: 0.92rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: rgba(26, 22, 34, 0.96);
+  color: #e5dcc7;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28), 0 0 22px rgba(212, 175, 55, 0.14);
+  z-index: 20;
+}
+
+.whatsapp-float svg {
+  width: 24px;
+  height: 24px;
+  fill: #d4af37;
+}
+
+@media (max-width: 960px) {
+  .hero-section,
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 22px 18px 52px;
+  }
+
+  .hero-copy h2 {
+    font-size: 2.6rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .time-slots {
+    grid-template-columns: 1fr;
+  }
+
+  .whatsapp-float {
+    width: calc(100% - 40px);
+    justify-content: center;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">K</span>
+          <div>
+            <h1>Korkmaz Organizasyon</h1>
+            <p>Hayalinizdeki etkinlik için lüks rezervasyon deneyimi</p>
+          </div>
+        </div>
+        <a class="cta-button" href="#rezervasyon">Rezervasyon Yap</a>
+      </header>
+
+      <main>
+        <section class="hero-section">
+          <div class="hero-copy">
+            <span class="eyebrow">Lüks Etkinlik Mekanı</span>
+            <h2>Organizasyonunuzu kusursuz planlayın</h2>
+            <p>Profesyonel hizmet, özel tarih yönetimi ve premium rezervasyon akışıyla her etkinlik unutulmaz olur.</p>
+            <div class="hero-stats">
+              <div>
+                <strong>5+</strong>
+                <span>Yıl tecrübe</span>
+              </div>
+              <div>
+                <strong>250+</strong>
+                <span>Gerçekleşen organizasyon</span>
+              </div>
+              <div>
+                <strong>7/24</strong>
+                <span>Destek</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="card-header">
+              <p>Rezervasyon Adımları</p>
+              <h3>Hemen tarih seçin</h3>
+            </div>
+            <div class="price-summary">
+              <p>Seçilen Organizasyon</p>
+              <h4 id="selected-event-label">Diğer Organizasyon</h4>
+              <span id="selected-event-price">15.000 TL</span>
+            </div>
+            <div class="event-options" id="event-options"></div>
+            <a class="secondary-button" href="#takvim">Tarihe Göz At</a>
+          </div>
+        </section>
+
+        <section class="reservation-panel" id="rezervasyon">
+          <div class="panel-grid">
+            <div class="panel card glass" id="calendar-card">
+              <div class="panel-header">
+                <div>
+                  <p>Takvim</p>
+                  <h3>Tarih Seç</h3>
+                </div>
+                <div class="month-controls">
+                  <button id="prev-month" aria-label="Önceki ay">&#8249;</button>
+                  <span id="current-month-label"></span>
+                  <button id="next-month" aria-label="Sonraki ay">&#8250;</button>
+                </div>
+              </div>
+              <div class="calendar" id="calendar"></div>
+              <div class="legend-row">
+                <span><span class="legend-dot available"></span>Uygun</span>
+                <span><span class="legend-dot booked"></span>Meşgul</span>
+                <span><span class="legend-dot selected"></span>Seçili</span>
+              </div>
+            </div>
+
+            <div class="panel card glass" id="form-card">
+              <div class="panel-header">
+                <div>
+                  <p>Rezervasyon Formu</p>
+                  <h3>Detayları Tamamla</h3>
+                </div>
+              </div>
+              <form id="booking-form">
+                <div class="input-group">
+                  <label for="name">Ad Soyad</label>
+                  <input type="text" id="name" placeholder="Örn. Ayşe Yılmaz" required />
+                </div>
+                <div class="input-group">
+                  <label for="phone">Telefon</label>
+                  <input type="tel" id="phone" placeholder="05XX XXX XX XX" pattern="^05\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$" required />
+                </div>
+                <div class="input-group">
+                  <label for="form-event">Organizasyon Türü</label>
+                  <select id="form-event" required>
+                    <option value="Diğer Organizasyon">Diğer Organizasyon</option>
+                    <option value="Nişan">Nişan</option>
+                    <option value="Kına">Kına</option>
+                    <option value="Doğum Günü">Doğum Günü</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label>Seçilen Tarih</label>
+                  <div class="readonly-value" id="selected-date-display">Tarih seçilmedi</div>
+                </div>
+                <div class="input-group">
+                  <label>Seçilen Saat</label>
+                  <div class="readonly-value" id="selected-time-display">Saat seçilmedi</div>
+                </div>
+                <div class="time-slot-card">
+                  <p>Uygun Saatler</p>
+                  <div class="time-slots" id="time-slots"></div>
+                </div>
+                <div class="input-group">
+                  <label for="notes">Not (isteğe bağlı)</label>
+                  <textarea id="notes" rows="4" placeholder="Özel taleplerinizi buraya yazın..."></textarea>
+                </div>
+                <button type="submit" class="primary-button">Rezervasyonu Kaydet</button>
+                <p class="hint">Rezervasyonunuz localStorage içinde saklanır ve seçilen tarih hemen rezerve edilir.</p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section class="summary-section" id="takvim">
+          <div class="summary-card glass">
+            <h3>Organizasyon Bilgileri</h3>
+            <p>Seçilen organizasyon türü, tarih ve saat bilgisi anında güncellenir. Kullanıcılar sadece uygun tarih ve boş saatler üzerinden rezervasyon yapabilir.</p>
+            <div class="summary-grid">
+              <div>
+                <strong id="summary-event">Diğer Organizasyon</strong>
+                <span>Etkinlik Türü</span>
+              </div>
+              <div>
+                <strong id="summary-date">Henüz seçilmedi</strong>
+                <span>Tarih</span>
+              </div>
+              <div>
+                <strong id="summary-time">Henüz seçilmedi</strong>
+                <span>Saat</span>
+              </div>
+              <div>
+                <strong id="summary-price">15.000 TL</strong>
+                <span>Toplam Fiyat</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <a class="whatsapp-float" href="https://wa.me/905001234567?text=Merhaba%20Korkmaz%20Organizasyon,%20rezervasyon%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer">
+        <div>
+          <span>WhatsApp ile İletişime Geç</span>
+        </div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.47A11.92 11.92 0 0012.02 0C5.38 0 0 5.37 0 12.01a11.9 11.9 0 001.98 6.62L0 24l5.65-1.49A11.96 11.96 0 0012.02 24c6.64 0 12.01-5.37 12.01-11.99 0-3.2-1.25-6.19-3.51-8.54zM12.02 21.76a9.74 9.74 0 01-4.95-1.39l-.35-.21-3.35.88.9-3.27-.23-.35A9.7 9.7 0 012.29 12.02a9.73 9.73 0 0117.44-6.88 9.73 9.73 0 01-6.71 16.62zm5.2-7.53c-.28-.14-1.65-.81-1.9-.9-.25-.1-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.38-1.64-1.54-1.92-.16-.28-.02-.43.12-.56.12-.12.28-.32.42-.48.14-.16.18-.28.28-.47.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.47.07-.72.34s-.93.91-.93 2.22.95 2.57 1.08 2.75c.14.18 1.86 2.84 4.52 3.98 1.59.69 2.26.77 3.06.66.47-.06 1.45-.59 1.65-1.16.2-.57.2-1.05.14-1.16-.05-.1-.24-.17-.52-.31z"></path></svg>
+      </a>
+    </div>
+
+    <script>
+const eventTypes = [
+  { label: 'Nişan', price: 20000 },
+  { label: 'Kına', price: 18000 },
+  { label: 'Doğum Günü', price: 10000 },
+  { label: 'Diğer Organizasyon', price: 15000 }
+];
+
+const monthNames = [
+  'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+  'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+];
+const dayNames = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+
+const DEFAULT_EVENT = 'Diğer Organizasyon';
+const timeSlotOptions = ['17:00', '19:00', '21:00'];
+const API_BASE_URL = 'http://localhost:5000/api';
+
+const eventOptionsContainer = document.getElementById('event-options');
+const selectedPriceLabel = document.getElementById('selected-event-price');
+const selectedEventLabel = document.getElementById('selected-event-label');
+const summaryEvent = document.getElementById('summary-event');
+const summaryPrice = document.getElementById('summary-price');
+const summaryDate = document.getElementById('summary-date');
+const summaryTime = document.getElementById('summary-time');
+const selectedDateDisplay = document.getElementById('selected-date-display');
+const selectedTimeDisplay = document.getElementById('selected-time-display');
+const formEventSelect = document.getElementById('form-event');
+const calendarElement = document.getElementById('calendar');
+const currentMonthLabel = document.getElementById('current-month-label');
+const prevMonthButton = document.getElementById('prev-month');
+const nextMonthButton = document.getElementById('next-month');
+const timeSlotsContainer = document.getElementById('time-slots');
+const bookingForm = document.getElementById('booking-form');
+
+let selectedEvent = DEFAULT_EVENT;
+let selectedPrice = eventTypes.find((item) => item.label === DEFAULT_EVENT).price;
+let selectedDate = null;
+let selectedTime = null;
+let currentDate = new Date();
+let currentYear = currentDate.getFullYear();
+let currentMonth = currentDate.getMonth();
+let bookedDates = [];
+let unavailableTimeSlots = {};
+
+async function fetchBookedDates() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/reservations`);
+    if (!response.ok) throw new Error('Rezervasyonlar alınamadı');
+    const reservations = await response.json();
+    bookedDates = reservations.data.map(res => res.date.split('T')[0]);
+    unavailableTimeSlots = {};
+    reservations.data.forEach(res => {
+      const dateKey = res.date.split('T')[0];
+      if (!unavailableTimeSlots[dateKey]) {
+        unavailableTimeSlots[dateKey] = [];
+      }
+      unavailableTimeSlots[dateKey].push(res.time);
+    });
+  } catch (error) {
+    console.error('Rezervasyonlar yüklenirken hata:', error);
+    showAlert('Rezervasyon bilgileri yüklenirken hata oluştu.');
+  }
+}
+
+async function fetchAvailability(date) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/reservations/availability?date=${date}`);
+    if (!response.ok) throw new Error('Müsaitlik bilgisi alınamadı');
+    const data = await response.json();
+    return data.availability || [];
+  } catch (error) {
+    console.error('Müsaitlik bilgisi alınırken hata:', error);
+    return [];
+  }
+}
+
+function formatDateLabel(dateString) {
+  const date = new Date(dateString);
+  return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+function renderEventOptions() {
+  eventOptionsContainer.innerHTML = '';
+  eventTypes.forEach((eventType) => {
+    const option = document.createElement('button');
+    option.type = 'button';
+    option.className = 'event-option' + (eventType.label === selectedEvent ? ' active' : '');
+    option.innerHTML = `
+      <div>
+        <span>${eventType.label}</span>
+        <small>${eventType.price.toLocaleString('tr-TR')} TL</small>
+      </div>
+      <strong>Seç</strong>
+    `;
+    option.addEventListener('click', () => {
+      selectedEvent = eventType.label;
+      selectedPrice = eventType.price;
+      formEventSelect.value = selectedEvent;
+      updateSummary();
+      renderEventOptions();
+    });
+    eventOptionsContainer.appendChild(option);
+  });
+}
+
+function updateSummary() {
+  selectedEventLabel.textContent = selectedEvent;
+  selectedPriceLabel.textContent = `${selectedPrice.toLocaleString('tr-TR')} TL`;
+  summaryEvent.textContent = selectedEvent;
+  summaryPrice.textContent = `${selectedPrice.toLocaleString('tr-TR')} TL`;
+  summaryDate.textContent = selectedDate ? formatDateLabel(selectedDate) : 'Henüz seçilmedi';
+  summaryTime.textContent = selectedTime || 'Henüz seçilmedi';
+  selectedDateDisplay.textContent = selectedDate ? formatDateLabel(selectedDate) : 'Tarih seçilmedi';
+  selectedTimeDisplay.textContent = selectedTime || 'Saat seçilmedi';
+}
+
+async function buildCalendar() {
+  calendarElement.innerHTML = '';
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+  dayNames.forEach((day) => {
+    const dayName = document.createElement('div');
+    dayName.className = 'day-name';
+    dayName.textContent = day;
+    calendarElement.appendChild(dayName);
+  });
+
+  const leadingEmpty = (firstDay + 6) % 7;
+  for (let i = 0; i < leadingEmpty; i += 1) {
+    const emptyCell = document.createElement('div');
+    emptyCell.className = 'calendar-day';
+    emptyCell.style.opacity = '0';
+    emptyCell.style.cursor = 'default';
+    emptyCell.style.border = 'none';
+    calendarElement.appendChild(emptyCell);
+  }
+
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const date = new Date(currentYear, currentMonth, day);
+    const dateString = date.toISOString().split('T')[0];
+    const dayButton = document.createElement('button');
+    dayButton.type = 'button';
+    dayButton.className = 'calendar-day';
+    dayButton.textContent = day;
+
+    if (bookedDates.includes(dateString) || date < new Date(new Date().setHours(0, 0, 0, 0))) {
+      dayButton.classList.add('booked');
+      dayButton.disabled = true;
+    }
+
+    if (selectedDate === dateString) {
+      dayButton.classList.add('selected');
+    }
+
+    dayButton.addEventListener('click', async () => {
+      if (bookedDates.includes(dateString)) return;
+      selectedDate = dateString;
+      selectedTime = null;
+      updateSummary();
+      await buildCalendar();
+      await renderTimeSlots();
+    });
+    calendarElement.appendChild(dayButton);
+  }
+}
+
+function getUnavailableSlots(dateString) {
+  if (unavailableTimeSlots[dateString]) {
+    return unavailableTimeSlots[dateString];
+  }
+  const date = new Date(dateString);
+  if (date.getDay() === 0) {
+    return ['21:00'];
+  }
+  if (date.getDay() === 6) {
+    return ['19:00'];
+  }
+  return [];
+}
+
+async function renderTimeSlots() {
+  timeSlotsContainer.innerHTML = '';
+  if (!selectedDate) {
+    const hint = document.createElement('p');
+    hint.textContent = 'Lütfen önce takvimde uygun bir tarih seçin.';
+    hint.style.color = '#c8b488';
+    hint.style.gridColumn = '1 / -1';
+    timeSlotsContainer.appendChild(hint);
+    return;
+  }
+
+  const availability = await fetchAvailability(selectedDate);
+  const unavailableSlots = getUnavailableSlots(selectedDate);
+
+  timeSlotOptions.forEach((slot) => {
+    const slotButton = document.createElement('button');
+    slotButton.type = 'button';
+    slotButton.className = 'time-slot';
+    slotButton.textContent = slot;
+
+    const isBooked = availability.find(item => item.time === slot && item.status === 'booked') || unavailableSlots.includes(slot);
+    if (isBooked) {
+      slotButton.classList.add('unavailable');
+      slotButton.textContent = `${slot} - Dolu`;
+      slotButton.disabled = true;
+    }
+
+    if (selectedTime === slot) {
+      slotButton.classList.add('active');
+    }
+
+    slotButton.addEventListener('click', () => {
+      if (isBooked) return;
+      selectedTime = slot;
+      updateSummary();
+      renderTimeSlots();
+    });
+
+    timeSlotsContainer.appendChild(slotButton);
+  });
+}
+
+function showAlert(message) {
+  const alertBox = document.createElement('div');
+  alertBox.textContent = message;
+  alertBox.style.position = 'fixed';
+  alertBox.style.left = '50%';
+  alertBox.style.bottom = '24px';
+  alertBox.style.transform = 'translateX(-50%)';
+  alertBox.style.padding = '16px 22px';
+  alertBox.style.borderRadius = '18px';
+  alertBox.style.background = 'rgba(30, 30, 30, 0.96)';
+  alertBox.style.color = '#f8f4e7';
+  alertBox.style.boxShadow = '0 20px 50px rgba(0,0,0,0.25)';
+  alertBox.style.zIndex = '50';
+  alertBox.style.opacity = '0';
+  alertBox.style.transition = 'opacity 250ms ease';
+  document.body.appendChild(alertBox);
+  requestAnimationFrame(() => {
+    alertBox.style.opacity = '1';
+  });
+  setTimeout(() => {
+    alertBox.style.opacity = '0';
+    alertBox.addEventListener('transitionend', () => alertBox.remove(), { once: true });
+  }, 2600);
+}
+
+async function initializeForm() {
+  await fetchBookedDates();
+  formEventSelect.value = selectedEvent;
+  renderEventOptions();
+  updateSummary();
+  await buildCalendar();
+  await renderTimeSlots();
+
+  prevMonthButton.addEventListener('click', async () => {
+    currentMonth -= 1;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear -= 1;
+    }
+    currentMonthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    await buildCalendar();
+  });
+
+  nextMonthButton.addEventListener('click', async () => {
+    currentMonth += 1;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear += 1;
+    }
+    currentMonthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    await buildCalendar();
+  });
+
+  currentMonthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+  bookingForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const notes = document.getElementById('notes').value.trim();
+    const eventType = formEventSelect.value;
+
+    if (!name || !phone) {
+      showAlert('Lütfen tüm zorunlu alanları doldurun.');
+      return;
+    }
+
+    if (!selectedDate) {
+      showAlert('Lütfen takvimden bir tarih seçin.');
+      return;
+    }
+
+    if (!selectedTime) {
+      showAlert('Lütfen uygun bir saat seçin.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/reservations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          eventType,
+          date: selectedDate,
+          time: selectedTime,
+          price: selectedPrice,
+          note: notes
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Rezervasyon oluşturulamadı');
+      }
+
+      showAlert('Rezervasyon başarıyla kaydedildi. Teşekkürler!');
+      bookingForm.reset();
+      selectedEvent = eventType;
+      selectedPrice = eventTypes.find((item) => item.label === eventType).price;
+      selectedDate = null;
+      selectedTime = null;
+      updateSummary();
+      await fetchBookedDates();
+      await buildCalendar();
+      await renderTimeSlots();
+    } catch (error) {
+      console.error('Rezervasyon hatası:', error);
+      showAlert(error.message || 'Rezervasyon sırasında hata oluştu.');
+    }
+  });
+}
+
+initializeForm();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayalinizdeki Evi Bulun - Premium Gayrimenkul</title>
+    <meta name="description" content="Size en uygun gayrimenkulleri hızlı ve güvenilir şekilde sunuyoruz. Hayalinizdeki evi bulun.">
+    <meta name="keywords" content="gayrimenkul, ev, villa, daire, satış, kiralama, İstanbul, Ankara">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        header {
+            background-color: #1a365d;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.8)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+        .cta-buttons {
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            background-color: #d4af37;
+            color: #1a365d;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #b8941f;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+        }
+        .btn-secondary:hover {
+            background-color: #d4af37;
+            color: #1a365d;
+        }
+        /* Search Section */
+        .search {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        .search h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a365d;
+        }
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-form input, .search-form select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 200px;
+        }
+        /* Featured Properties */
+        .properties {
+            padding: 4rem 0;
+        }
+        .properties h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a365d;
+        }
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .property-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+        .property-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .property-card .content {
+            padding: 1rem;
+        }
+        .property-card h3 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+        .property-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        /* Why Choose Us */
+        .why-choose {
+            padding: 4rem 0;
+            background-color: #1a365d;
+            color: white;
+        }
+        .why-choose h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .benefit {
+            text-align: center;
+        }
+        .benefit i {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        /* About */
+        .about {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        .about h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a365d;
+        }
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+        }
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a365d;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial cite {
+            font-weight: bold;
+            color: #1a365d;
+        }
+        /* Lead Form */
+        .lead-form {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        .lead-form h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a365d;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a365d;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a365d;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .search-form {
+                flex-direction: column;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Premium Gayrimenkul</div>
+            <ul>
+                <li><a href="#hero">Ana Sayfa</a></li>
+                <li><a href="#search">Arama</a></li>
+                <li><a href="#properties">İlanlar</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hayalinizdeki Evi Bulun</h1>
+                <p>Size en uygun gayrimenkulleri hızlı ve güvenilir şekilde sunuyoruz.</p>
+                <div class="cta-buttons">
+                    <a href="#properties" class="btn">İlanları İncele</a>
+                    <a href="#lead-form" class="btn btn-secondary">Hemen Teklif Al</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="search" class="search">
+        <div class="container">
+            <h2>Gayrimenkul Arama</h2>
+            <form class="search-form">
+                <select>
+                    <option>Konum Seçin</option>
+                    <option>İstanbul</option>
+                    <option>Ankara</option>
+                    <option>İzmir</option>
+                </select>
+                <input type="number" placeholder="Min Fiyat">
+                <input type="number" placeholder="Max Fiyat">
+                <select>
+                    <option>Tür Seçin</option>
+                    <option>Daire</option>
+                    <option>Villa</option>
+                    <option>Arsa</option>
+                </select>
+                <button type="submit" class="btn">Ara</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="properties" class="properties">
+        <div class="container">
+            <h2>Öne Çıkan İlanlar</h2>
+            <div class="property-grid">
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lüks Daire">
+                    <div class="content">
+                        <h3>2+1 Lüks Daire</h3>
+                        <p>İstanbul, Beşiktaş - 2.500.000 TL</p>
+                        <p>Deniz manzaralı, modern daire.</p>
+                        <a href="#" class="btn">Detayları Gör</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Villa">
+                    <div class="content">
+                        <h3>4+1 Villa</h3>
+                        <p>İzmir, Çeşme - 5.000.000 TL</p>
+                        <p>Havuzlu, bahçeli villa.</p>
+                        <a href="#" class="btn">Detayları Gör</a>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Arsa">
+                    <div class="content">
+                        <h3>5000m² Arsa</h3>
+                        <p>Ankara, Çankaya - 1.000.000 TL</p>
+                        <p>İmarlı, merkezi konumda arsa.</p>
+                        <a href="#" class="btn">Detayları Gör</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose">
+        <div class="container">
+            <h2>Neden Bizi Tercih Etmelisiniz?</h2>
+            <div class="benefits">
+                <div class="benefit">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Güvenilir Hizmet</h3>
+                    <p>Yılların deneyimiyle güvenilir gayrimenkul danışmanlığı.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Hızlı Sonuç</h3>
+                    <p>İhtiyaçlarınıza en uygun seçenekleri hızla buluruz.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Profesyonel Danışmanlık</h3>
+                    <p>Uzman ekibimizle en iyi kararı vermenize yardımcı oluruz.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-clock"></i>
+                    <h3>7/24 Destek</h3>
+                    <p>Her zaman yanınızdayız, sorularınızı yanıtlıyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Hakkımızda</h2>
+            <p>Premium Gayrimenkul olarak, müşterilerimizin hayallerindeki evi bulmaları için çalışıyoruz. Yılların deneyimi ve uzman ekibimizle, güvenilir, hızlı ve profesyonel hizmet sunuyoruz. Gayrimenkul sektöründe güvenilir bir partner arıyorsanız, doğru yerdesiniz.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Müşteri Yorumları</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Harika bir deneyim yaşadım. Profesyonel ve güvenilir hizmet."</p>
+                    <cite>- Ahmet Yılmaz</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"Hayalimdeki evi kısa sürede buldum. Teşekkürler!"</p>
+                    <cite>- Ayşe Kaya</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"7/24 destek ve hızlı sonuçlar için Premium Gayrimenkul'e güvenebilirsiniz."</p>
+                    <cite>- Mehmet Demir</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lead-form" class="lead-form">
+        <div class="container">
+            <h2>Ücretsiz Teklif Alın</h2>
+            <div class="form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ad Soyad</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Bütçe</label>
+                        <select id="budget" required>
+                            <option value="">Bütçe Seçin</option>
+                            <option value="500000-1000000">500.000 - 1.000.000 TL</option>
+                            <option value="1000000-2000000">1.000.000 - 2.000.000 TL</option>
+                            <option value="2000000+">2.000.000 TL+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesaj</label>
+                        <textarea id="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Teklif Al</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p>Telefon: +90 555 123 45 67</p>
+                    <p>E-posta: info@premiumgayrimenkul.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Sosyal Medya</h3>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Konum</h3>
+                    <p>İstanbul, Türkiye</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.0000000000005!2d28.978400000000002!3d41.0082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9be2c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2sIstanbul%2C%20Turkey!5e0!3m2!1sen!2s!4v1234567890!5m2!1sen!2s" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/905551234567" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Teşekkürler! Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.');
+            this.reset();
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(26, 54, 93, 0.9)';
+            } else {
+                header.style.backgroundColor = '#1a365d';
+            }
+        });
+    </script>
+</body>
+</html>
